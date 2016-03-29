@@ -16,13 +16,16 @@ then
 fi
 
 echo 
-echo "Pulling images to be used"
-docker pull mongo:3.2.4
+read -p "Rebuild Docker image from latest code in ~/git/treatment-arm-api/treatment_arm_api? (y/n)" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    docker build -t matchbox/tarm ~/git/treatment-arm-api/treatment_arm_api/
+fi
 
 echo
-echo "Start DB Instance"
-mkdir /tmp/mongodb
-docker run -d -v /tmp/mongodb -p 27017:27017 --name mongodb -e MONGODB_DBNAME=match mongo:3.2.4
+echo "Start TreatmentArmAPI Instance"
+docker run -d --name TreatmentArm --link mongodb -p 10235:10235 matchbox/tarm
 
 echo
 echo "Local Docker Machine IP"
