@@ -1,11 +1,13 @@
 #!/bin/bash
 
+echo
+echo
+echo "----------Starting RabbitMQ--------------------------------------------------------------------"
+echo
+
 eval "$(docker-machine env default)"
 echo "Docker Containers:"
 docker ps -a
-echo 
-echo "Docker Images:"
-docker images
 
 echo
 read -p "Ensure Docker container to be created is not already listed above. Continue? (y/n)" -n 1 -r
