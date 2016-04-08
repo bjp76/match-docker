@@ -25,6 +25,11 @@ then
     docker build -t matchbox/tarm ~/git/treatment-arm-api/treatment_arm_api/
 fi
 
+echo
+echo "Start TreatmentArmAPI Instance"
+docker run -d --name TreatmentArm --link mongodb -p 10235:10235 matchbox/tarm
+
+
 #Offer to load baseline data to DB
 echo
 echo
@@ -36,10 +41,6 @@ then
    ruby treatment_arm_loader.rb -u http://192.168.99.100:10235/ -f ../spreadsheets/production/WAVE3_ARMS_FULL_LATEST.xlsx -s eay131_a
 fi
 
-
-echo
-echo "Start TreatmentArmAPI Instance"
-docker run -d --name TreatmentArm --link mongodb -p 10235:10235 matchbox/tarm
 
 echo
 echo "Local Docker Machine IP"
