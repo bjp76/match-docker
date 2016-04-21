@@ -17,9 +17,9 @@ then
     exit 1
 fi
 
-echo 
-echo "Pulling images to be used"
-docker pull rabbitmq:3.6.1-management
+#echo 
+#echo "Pulling images to be used"
+#docker pull rabbitmq:3.6.1-management
 
 echo
 echo "Start RabbitMQ Instance"

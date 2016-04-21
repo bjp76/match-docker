@@ -17,9 +17,9 @@ then
     exit 1
 fi
 
-echo 
-echo "Pulling images to be used"
-docker pull mongo:3.2.4
+#echo 
+#echo "Pulling images to be used"
+#docker pull mongo:3.2.4
 
 echo
 echo "Start DB Instance"

@@ -17,9 +17,9 @@ then
     exit 1
 fi
 
-echo 
-echo "Pulling images to be used"
-docker pull redis:3.0.7
+#echo 
+#echo "Pulling images to be used"
+#docker pull redis:3.0.7
 
 echo
 echo "Start Redis Instance"
