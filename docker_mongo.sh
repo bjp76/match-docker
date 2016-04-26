@@ -37,6 +37,18 @@ docker run -d -v /tmp/mongodb -p 27017:27017 --name mongodb -e MONGODB_DBNAME=ma
 #docker exec mongodb mongo -u root -p M@tch123 admin --eval 'db.hostInfo();'
 
 echo
+read -p "Restore new MongoDB container with contents of latest zip file in ./MongoDB-Dump/? (y/n)" -n 1 -r
+echo    # (optional) move to a new line
+if [[  $REPLY =~ ^[Yy]$ ]]
+then
+	cd MongoDB-Dump
+	rm -rf dump
+	unzip "`ls -t *.zip|head -1`"
+	docker cp dump mongodb:/tmp
+	docker exec mongodb mongorestore -d match /tmp/dump/Match/
+fi
+
+echo
 echo "Local Docker Machine IP"
 docker-machine ip default
 
