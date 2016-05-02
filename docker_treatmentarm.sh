@@ -27,11 +27,13 @@ fi
 
 echo
 echo "Start TreatmentArmAPI Instance"
-docker run -d --name TreatmentArmApi --link mongodb --link rabbitmq -p 10235:10235 matchbox/nci-treatment-arm-api
+docker pull matchbox/nci-treatment-arm-api:latest
+docker run -d --name TreatmentArmApi --link mongodb --link rabbitmq -p 10235:10235 matchbox/nci-treatment-arm-api:latest
 
 echo
 echo "Start TreatmentArmProcessorAPI Instance"
-docker run -d --name TreatmentArmProcessorApi --link mongodb --link rabbitmq -p 3000:3000 matchbox/nci-treatment-arm-processor-api
+docker pull matchbox/nci-treatment-arm-processor-api:latest
+docker run -d --name TreatmentArmProcessorApi --link mongodb --link rabbitmq -p 3000:3000 matchbox/nci-treatment-arm-processor-api:latest
 
 #Offer to load baseline data to DB
 #echo
